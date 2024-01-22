@@ -1,14 +1,14 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ResultComponent } from '../result/result.component';
-
+import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 @Component({
   selector: 'main-container',
   standalone: true,
-  imports: [CommonModule,FormsModule,ResultComponent],
+  imports: [CommonModule, FormsModule, ResultComponent, MatDialogModule],
   templateUrl: './main-container.component.html',
-  styleUrl: './main-container.component.css'
+  styleUrl: './main-container.component.css',
 })
 export class MainContainerComponent {
   bloodGroups: string[] = ['O-', 'O+', 'B-', 'B+', 'A-', 'A+', 'AB-', 'AB+'];
@@ -16,8 +16,7 @@ export class MainContainerComponent {
   donorBloodGroup: string = '';
   isCompatible: boolean | null = null;
   isCheckDone: boolean = false;
-
-  constructor() {}
+  constructor(public dialog: MatDialog) {}
   checkCompatibility() {
     if (this.patientBloodGroup === 'O-' && this.donorBloodGroup === 'O-') {
       this.isCheckDone = true;
@@ -84,5 +83,8 @@ export class MainContainerComponent {
       this.isCheckDone = true;
       this.isCompatible = false;
     }
+    this.dialog.open(ResultComponent, {
+      data: { CheckDone: this.isCheckDone, Compatible: this.isCompatible },
+    });
   }
 }
