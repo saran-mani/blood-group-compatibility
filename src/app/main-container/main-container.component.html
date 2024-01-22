@@ -1,0 +1,49 @@
+<div class="bg-blue-950 min-h-screen flex flex-col items-center">
+  <div
+    class="bg-slate-50 p-10 rounded-lg shadow w-80 md:w-3/4 mx-auto mt-5 lg:w-1/2"
+  >
+    <div>
+      <label for="patient" class="block mb-2 font-bold text-gray-600"
+        >Patients blood group
+        <i class="fa-solid fa-droplet" style="color: red"></i
+      ></label>
+      <select
+        name="patient"
+        id=""
+        [(ngModel)]="patientBloodGroup"
+        class="border border-gray-300 shadow p-3 w-full rounded mb-4 appearance-none bg-slate-50"
+      >
+        <option value="">select blood group</option>
+        @for (bloodgroup of bloodGroups; track $index) {
+        <option>{{ bloodgroup }}</option>
+        }
+      </select>
+    </div>
+    <div>
+      <label for="donor" class="block mb-2 font-bold text-gray-600"
+        >Donor blood group <i class="fa-solid fa-droplet" style="color: red"></i
+      ></label>
+      <select
+        name=" donor"
+        id=""
+        [(ngModel)]="donorBloodGroup"
+        [disabled]="!patientBloodGroup"
+        class="border border-gray-300 shadow p-3 w-full rounded mb-4 appearance-none bg-slate-50"
+      >
+        <option value="">select blood group</option>
+        @for (bloodgroup of bloodGroups; track $index) {
+        <option>{{ bloodgroup }}</option>
+        }
+      </select>
+    </div>
+    <button
+      type="submit"
+      (click)="checkCompatibility()"
+      [disabled]="!patientBloodGroup || !donorBloodGroup"
+      class="block w-full border border-slate-300 text-white bg-black font-bold p-4 rounded-lg hover:border-slate-400"
+    >
+      Submit
+    </button>
+  </div>
+  <result [CheckDone]="isCheckDone" [Compatible]="isCompatible" ></result>
+</div>

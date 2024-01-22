@@ -1,0 +1,41 @@
+@if (CheckDone) {
+    <div
+      class="bg-slate-50 p-10 rounded-lg shadow w-80 md:w-4/4 mx-auto mt-9 lg:w-1/2"
+    >
+      @if (Compatible) {
+      <div class="message">Compatible👍</div>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="100"
+        height="100"
+        viewBox="0 0 100 100"
+      >
+        <circle
+          cx="50"
+          cy="50"
+          r="40"
+          stroke="green"
+          stroke-width="10"
+          fill="white"
+        />
+        <polyline
+          points="25,50 40,65 75,30"
+          stroke="green"
+          stroke-width="10"
+          fill="none"
+        >
+          <animate
+            attributeName="stroke-dasharray"
+            from="0 100"
+            to="100 100"
+            dur="1s"
+            begin="0s"
+            fill="freeze"
+          />
+        </polyline>
+      </svg>
+      }@else if(CheckDone){
+      <div class="message">Not Compatible👎</div>
+      }
+    </div>
+    }
