@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+#heading{
+    /* font-family: "Work Sans", sans-serif; */
+    font-family: "Raleway", sans-serif;
+    font-weight: bold;
+    /* text-transform: uppercase; */
+    text-decoration:1px  wavy white;
+
+}
+#subheading{
+    font-family: "Raleway", sans-serif;
+
+}
+label,option{
+    font-family: "Raleway", sans-serif;
+
+}
