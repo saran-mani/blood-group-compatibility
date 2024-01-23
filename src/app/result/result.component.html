@@ -1,27 +1,32 @@
-
-  @if (CheckDone) {
-    <div class="bg-slate-50 p-10 rounded-lg shadow w-64 h-96" id="dialog-box">
-      @if (!isLoding) {
-        <blood-drop-loading></blood-drop-loading>
-        
-      }@else{
-      @if (Compatible) {
-      <div class="message text-green-500">Compatible👍</div>
-      <img src="assets/correct.svg" alt="">
-      }@else if(CheckDone){
-      <div class="message text-red-500">Not Compatible👎</div>
-      <img src="assets/wrong.svg" alt="">
-      }
-      <div mat-dialog-actions>
-        <button
-          class="border border-slate-300 hover:border-slate-400 bg-blue-950 text-white p-2 rounded"
-          mat-dialog-close
-        >
-          Close
-        </button>
-      </div>
-    }
+@if (CheckDone){
+<div
+  class="bg-slate-50 p-10 rounded-lg shadow w-64 h-64 flex flex-col justify-center items-center"
+  id="dialog-box"
+>
+  @if (!isLoding){
+  <blood-drop-loading></blood-drop-loading>} @else{ @if (Compatible){
+  <div class="flex flex-col items-center">
+    <div class="message text-green-500 text-center">Blood Types Match: Compatible 👍</div>
+    <img class="symbol" src="assets/correct.svg" alt="" />
   </div>
+  } @else{
+  <div class="flex flex-col items-center">
+    <div class="message text-red-500 text-center">
+      Blood Types Do Not Match: Not Compatible 👎
+    </div>
+    <img class="symbol" src="assets/wrong.svg" alt="" />
+  </div>
+  }
+  <div class="mt-4">
+    <div class="flex justify-center">
+      <button
+        class="close-button border border-slate-300 hover:border-slate-400 bg-blue-950 text-white p-2 rounded"
+        mat-dialog-close
+      >
+        Close
+      </button>
+    </div>
+  </div>
+  }
+</div>
 }
-
-
